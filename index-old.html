@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>DogTrekker&reg; Mobile App</title>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script type="text/javascript" src="js/slideshow.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/app-slideshow.css">
+	<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+	<script>
+	$(function() {
+		$("#slideshow-1").slideshow();
+		$("#slideshow-2").slideshow();
+	});
+	</script>
+</head>
+<body>
+	<h1>DogTrekker<sup>&reg;</sup> Mobile Application</h1>
+	<div class="main-container">
+		<div class="app-slideshow" id="slideshow-1">
+			<h3>Green Version</h3>
+		<!-- "previous slide" button -->
+			<a class="app-slideshow__control backwards">&lt;</a>
+			<!-- container for the slides -->
+			<div class="app-slideshow__container app-slideshow__container--iphone5">
+				<div class="app-slideshow__image-holder slider cf">
+					<!-- new slide -->
+					<div class="app-slideshow__slide active">
+						<img src="img/loading.jpg" alt="DogTrekker&reg;">
+						<h2>Loading Screen</h2>
+					</div>
+
+					<!-- new slide -->
+					<div class="app-slideshow__slide">
+						<img src="img/home.jpg" alt="DogTrekker&reg;">
+						<h2>Home Screen (Within CA)</h2>
+					</div>
+
+					<!-- new slide -->
+					<div class="app-slideshow__slide">
+						<img src="img/home-away.jpg" alt="DogTrekker&reg;">
+						<h2>Home Screen (Outside CA)</h2>
+					</div>
+
+					<!-- new slide -->
+					<div class="app-slideshow__slide">
+						<img src="img/region.jpg" alt="DogTrekker&reg;">
+						<h2>Region Screen</h2>
+					</div>
+					<!-- new slide -->
+					<div class="app-slideshow__slide">
+						<img src="img/detail.jpg" alt="DogTrekker&reg;">
+						<h2>Detail Screen</h2>
+					</div>
+			</div><!-- end .app-slideshow__image-holder -->
+		</div>
+		<!-- "next slide" button -->
+		<a class="app-slideshow__control forwards">&gt;</a><p>
+		</p>
+		<!-- the tabs -->
+		<div class="app-slideshow__slidetabs"></div>
+		<div class="cf"></div>
+		<div class="app-slideshow__cta"></div>
+    </div><!-- end slideshow -->
+
+	<div class="app-slideshow" id="slideshow-2">
+		<h3>Red Version</h3>
+		<!-- "previous slide" button -->
+		<a class="app-slideshow__control backwards">&lt;</a>
+		<!-- container for the slides -->
+		<div class="app-slideshow__container app-slideshow__container--iphone5">
+			<div class="app-slideshow__image-holder slider cf">
+			<!-- new slide -->
+			<div class="app-slideshow__slide">
+				<img src="img/loading-red.jpg" alt="DogTrekker&reg;">
+				<h2>Loading Screen</h2>
+			</div>
+
+			<!-- new slide -->
+			<div class="app-slideshow__slide">
+				<img src="img/home-red.jpg" alt="DogTrekker&reg;">
+				<h2>Home Screen (Within CA)</h2>
+			</div>
+
+			<!-- new slide -->
+			<div class="app-slideshow__slide">
+				<img src="img/home-away-red.jpg" alt="DogTrekker&reg;">
+				<h2>Home Screen (Outside CA)</h2>
+			</div>
+
+			<!-- new slide -->
+			<div class="app-slideshow__slide">
+				<img src="img/region-red.jpg" alt="DogTrekker&reg;">
+				<h2>Region Screen</h2>
+			</div>
+
+			<!-- new slide -->
+			<div class="app-slideshow__slide">
+				<img src="img/detail-red.jpg" alt="DogTrekker&reg;">
+				<h2>Detail Screen</h2>
+			</div>
+		</div><!-- end .app-slideshow__image-holder -->
+
+		</div>
+		<!-- "next slide" button -->
+		<a class="app-slideshow__control forwards">&gt;</a><p>
+		</p>
+		<!-- the tabs -->
+		<div class="app-slideshow__slidetabs"></div>
+		<div class="cf">
+		</div>
+		<div class="app-slideshow__cta">
+		</div>
+    </div>
+</div><!-- end .main-container -->
+</body>
+</html>
