@@ -5,10 +5,42 @@
 	<title>DogTrekker&reg; Mobile App</title>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 	<script type="text/javascript" src="js/slideshow.js"></script>
-	<link rel="stylesheet" type="text/css" href="css/app-slideshow.css">
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
 	<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
 	<script>
 	$(function() {
+		var targetContainer=$(".app-slideshow__container");
+		var targetSlideshow=$(".app-slideshow");
+		var targetImages=$(".app-slideshow__image-holder");
+		var currType=0;
+		var currTrans=0;
+		var typeArr=[
+		{device: 'ipad', modifier: 'airV'},
+		{device: 'ipad', modifier: 'airH'},
+		{device: 'iphone', modifier: 'iphone4'},
+		{device: 'iphone', modifier: 'iphone5'},
+		{device: 'samsung', modifier: 'galaxyS5'}
+		];
+		var transArr=['fader', 'slider'];
+		updateTrans(0);
+		updateType(0);
+		$("#typeForm").submit(function( event ) {
+			event.preventDefault();
+			updateType($( "#type" ).val());
+			updateTrans($(this).find( "#transition" ).val());
+		});
+		function updateType(selector){
+			targetContainer.removeClass("app-slideshow__container--"+typeArr[currType].modifier);
+			targetSlideshow.removeClass("app-slideshow--"+typeArr[currType].device);
+			currType=selector;
+			targetContainer.addClass("app-slideshow__container--"+typeArr[currType].modifier);
+			targetSlideshow.addClass("app-slideshow--"+typeArr[currType].device);
+		}
+		function updateTrans(selector){
+			targetImages.removeClass(transArr[currTrans]);
+			currTrans=selector;
+			targetImages.addClass(transArr[currTrans]);
+		}
 		$("#slideshow-1").slideshow();
 	});
 	</script>
@@ -16,13 +48,27 @@
 <body>
 	<h1>DogTrekker<sup>&reg;</sup> Mobile Application</h1>
 	<div class="main-container">
-	<div class="app-slideshow app-slideshow--iphone" id="slideshow-1">
+		<form id="typeForm">
+			<select id="type">
+				<option value="2">iPhone 4</option>
+				<option value="3">iPhone 5</option>
+				<option value="1">iPad Horizontal</option>
+				<option value="0">iPad Vertical</option>
+				<option value="4">Samsung Galaxy S5</option>
+			</select>
+			<select id="transition">
+				<option value="0">fade</option>
+				<option value="1">slide</option>
+			</select>
+			<input class="button" type="submit" value="Submit">
+		</form>
+    	<div class="app-slideshow" id="slideshow-1">
 		<h3>October 31, 2014</h3>
-		<!-- "previous slide" button -->
-		<a class="app-slideshow__control backwards">&lt;</a>
 		<!-- container for the slides -->
-		<div class="app-slideshow__container app-slideshow__container--iphone5">
-			<div class="app-slideshow__image-holder slider cf">
+		<div class="app-slideshow__container">
+			<!-- "previous slide" button -->
+			<a class="app-slideshow__control backwards">&lt;</a>
+			<div class="app-slideshow__image-holder cf">
 			<!-- new slide -->
 			<div class="app-slideshow__slide">
 				<img src="img/cover-ipad.jpg" alt="DogTrekker&reg;">
@@ -53,15 +99,13 @@
 				<h2>Detail Screen</h2>
 			</div>
 		</div><!-- end .app-slideshow__image-holder -->
-
-		</div>
 		<!-- "next slide" button -->
-		<a class="app-slideshow__control forwards">&gt;</a><p>
-		</p>
+		<a class="app-slideshow__control forwards">&gt;</a>
+		</div><!-- end .app-slideshow__container -->
 		<!-- the tabs -->
 		<div class="app-slideshow__slidetabs"></div>
 		<div class="cf"></div>
-    </div>
+    </div><!-- end .app-slideshow -->
 </div><!-- end .main-container -->
 </body>
 </html>

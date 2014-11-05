@@ -1,0 +1,225 @@
+/*------- iphone -------*/
+$iphone:(
+	class-name: "iphone",
+	background-image: url(../img/iphones.png)
+	);
+$iphone4: (
+	class-name: "iphone4",
+	image-width: 245px,
+	image-height: 369px,
+	image-x-offset: 46px,
+	image-y-offset: 125px,
+	container-width: 339px,
+	container-height: 620px,
+	container-background-pos: -366px 0
+	);
+$iphone5: (
+	class-name: "iphone5",
+	image-width: 245px,
+	image-height: 437px,
+	image-x-offset: 46px,
+	image-y-offset: 112px,
+	container-width: 339px,
+	container-height: 671px,
+	container-background-pos: -6px 0
+	);
+/*------- ipad -------*/
+$ipad:(
+	class-name: "ipad",
+	width: 800px,
+	background-image: url(../img/ipads.png)
+	);
+$airV:(
+	class-name: "airV",
+	image-width: 368px,
+	image-height: 491px,
+	image-x-offset: 33px,
+	image-y-offset: 113px,
+	container-width: 435px,
+	container-height: 704px,
+	container-background-pos: -6px 0
+	);
+
+$airH:(
+	class-name: "airH",
+	image-width: 491px,
+	image-height: 368px,
+	image-x-offset: 55px,
+	image-y-offset: 28px,
+	container-width: 605px,
+	container-height: 455px,
+	container-background-pos: -451px -150px
+	);
+/*----- Galaxy S5 -----*/
+$samsung:(
+	class-name: "samsung",
+	width: 400px,
+	background-image: url(../img/galaxy-s5.png)
+	);
+$galaxyS5: (
+	class-name: "galaxyS5",
+	image-width: 257px,
+	image-height: 455px,
+	image-x-offset: 18px,
+	image-y-offset: 58px,
+	container-width: 292px,
+	container-height: 569px,
+	container-background-pos: 0 0
+	);
+/*-------- Contents ---------
+I. Defaults
+II. Custom Containers
+	A. --iPad
+	B. --iPhone
+	C. --Samsung Galaxy
+
+III. Effects
+-------- Contents ---------*/
+
+/*--------------------- I. Defaults ---------------------*/
+.app-slideshow{
+	position: relative;
+	margin:0 auto;
+	padding: 20px;
+	.app-slideshow__image-holder{
+		overflow: hidden;
+		position: relative;
+	}
+	h3{
+		text-align: center;
+	}
+	.app-slideshow__container{
+		display: block;
+		position: relative;
+		margin: 0 auto;
+		background-repeat: no-repeat;
+	}
+}
+.app-slideshow__slide{
+	width: inherit;
+	height: inherit;
+	position: absolute;
+	z-index: 0;
+	transition: left 0s .5s ease, -webkit-transform 0s .5s ease;
+	&.active{
+		z-index: 1;
+		transition: opacity .25s ease, left .25s ease, -webkit-transform .25s ease;
+	}
+	img{
+		width: inherit;
+		height: inherit;
+	}
+	h2{
+		width: inherit;
+		position: absolute;
+		text-align: center;
+		font-weight: normal;
+		margin: 0;
+		padding: 10px 0;
+		font-size: 12px;
+		color: white;
+		background: rgba(0,0,0,.5);
+		bottom: 0;
+	}
+}
+.app-slideshow__control{
+	display: block;
+	width: 20px;
+	height: 20px;
+	position: absolute;
+	background: #0099cc;
+	border-radius: 50%;
+	border: 2px solid #CCC;
+	color: white;
+	text-align: center;
+	line-height: 20px;
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+	font-weight: 300;
+	cursor: pointer;
+	top: 50%;
+	&:hover{
+		background: #00AAFF;
+		text-decoration: none;
+	}
+	&.forwards{
+		right: -30px;
+	}
+	&.backwards{
+		left: -30px;
+	}
+
+}
+.app-slideshow__slidetabs{
+	text-align: center;
+	font-size: 0;
+	.app-slideshow__tab{
+		border-radius: 50%;
+		height: 10px;
+		width: 10px;
+		border: 2px solid #CCC;
+		background: #333;
+		display: inline-block;
+		margin: 3px;
+		&:hover, &.active{
+			background: #00AAFF;
+		}
+	}
+
+}
+
+/*--------------------- II. Custom Containers ---------------------*/
+
+
+@mixin createDevice($device, $modifier){
+	.app-slideshow--#{map-get($device, class-name)}{
+		.app-slideshow__container{
+			background-image: map-get($device, background-image);
+			&.app-slideshow__container--#{map-get($modifier,class-name)}{
+				width: map-get($modifier, container-width);
+				height: map-get($modifier, container-height);
+				background-position: map-get($modifier, container-background-pos);
+				.app-slideshow__image-holder{
+					width: map-get($modifier, image-width);
+					height: map-get($modifier, image-height);
+					left: map-get($modifier, image-x-offset);
+					top: map-get($modifier, image-y-offset);
+				}
+			}
+		}
+	}
+}
+
+
+/* ------------------- A. --iPad ------------------- */
+@include createDevice($ipad, $airV);
+@include createDevice($ipad, $airH);
+
+/* ------------------- B. --iPhone ------------------- */
+
+@include createDevice($iphone, $iphone4);
+@include createDevice($iphone, $iphone5);
+
+/* ------------------- C. --Samsung Galaxy ------------------- */
+
+@include createDevice($samsung, $galaxyS5);
+
+/*--------------------- III. Effects ---------------------*/
+
+.fader{
+	.app-slideshow__slide{
+		transform: scale(.9);
+		opacity: 0;
+		&.active{
+			transform: scale(1);
+			opacity: 1;
+		}
+	}
+}
+.slider{
+	.app-slideshow__slide{
+		left: 100%;
+		&.active{
+			left: 0;
+		}
+	}
+}

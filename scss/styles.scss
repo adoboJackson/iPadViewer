@@ -1,0 +1,60 @@
+@import 'bourbon';
+@import 'base';
+/*--- END BOURBON STYLES ----*/
+@import 'slideshow';
+
+$font__primary: 'Roboto', sans-serif;
+$lt_gray: #d2d2d2;
+body{
+	font-family: $font__primary;
+
+}
+.main-container{
+	position: relative;
+	margin: 0 auto;
+	user-select: none;
+
+}
+h1{
+	width: 100%;
+	text-align: center;
+	color: #767676;
+	font-weight: normal;
+}
+*{
+	transition:all .25s ease;
+}
+/**
+ * For IE 6/7 only
+ * Include this rule to trigger hasLayout and contain floats.
+ */
+.cf {
+    *zoom: 1;
+}
+/* -- start clearfix --*/
+.cf:before,
+.cf:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.cf:after {
+    clear: both;
+}
+/* -- end clearfix --*/
+/*--- form stuff ---*/
+form{
+	background: $lt_gray;
+	padding: 20px;
+	border-radius: 4px;
+	position: absolute;
+	margin: 1em;
+	z-index: 1000;
+}
+select{
+	padding: 5px;
+	font-size: 1.5em;
+	font-family: inherit;
+	border: none;
+	min-width: 300px;
+}
